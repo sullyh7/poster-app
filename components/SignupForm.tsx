@@ -1,11 +1,12 @@
 "use client"
 
+import { Database } from '@/types/types_db';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import React, { useState } from 'react'
 
 export const SignupForm = () => {
 
-    const supabaseClient = createClientComponentClient();
+    const supabaseClient = createClientComponentClient<Database>();
     const [error, setError] = useState<string | null>(null);
 
     const [status, setStatus] = useState("signup");
@@ -28,9 +29,11 @@ export const SignupForm = () => {
                 email: email,
                 password: password,
                 options: {
+                    emailRedirectTo: `/${location.origin}`,
                     data: {
                         username
                     }
+
                 }
             });
             if (error) {
