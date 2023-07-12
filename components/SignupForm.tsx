@@ -25,6 +25,7 @@ export const SignupForm = () => {
             throw new Error();
         }
         try {
+            console.log(process.env.VERCEL_URL)
             const {error, data} = await supabaseClient.auth.signUp({
                 email: email,
                 password: password,
@@ -33,7 +34,6 @@ export const SignupForm = () => {
                     data: {
                         username
                     }
-
                 }
             });
             if (error) {
