@@ -11,7 +11,7 @@ const FeedLayout = ({children}: FeedLayoutProps) => {
         <div className='flex-col flex'>
             <Sidebar/>
         </div>
-        <div className='mr-[10rem]'>
+        <div className='md:mr-10 flex justify-center items-center'>
             {children}
         </div>
             
