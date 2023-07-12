@@ -26,7 +26,7 @@ const HomeFeed = () => {
             setData(data);
 
         });
-    }, [supabaseClient])
+    }, [])
     
 
     return  (
