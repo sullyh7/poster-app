@@ -13,25 +13,20 @@ const HomeFeed = () => {
     const [data, setData] = useState<PostResp[] | null>(null)
     const [error, setError] = useState<string | null>(null);
 
-    const loadPosts = async () => {
+    useEffect(() => {
         setError(null);
-        try {
-            const { data, error } = await supabaseClient
-            .from("posts")
-            .select("*, profiles(username)").order("created_at", {ascending: false});
-
+        supabaseClient
+        .from("posts")
+        .select("*, profiles(username)").order("created_at", {ascending: false})
+        .then(({data, error}) => {
+            
             if (error) {
-                throw new Error();
+                setError("Error loading posts")
             }
             setData(data);
-        } catch (e) {
-            setError("Error loading posts");
-        }
-    }
 
-    useEffect(() => {
-        loadPosts();
-    })
+        });
+    }, [supabaseClient])
     
 
     return  (
