@@ -1,6 +1,6 @@
 import Post from '@/components/Post';
 import { Database } from '@/types/types_db';
-import { SupabaseClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/dist/client/components/headers';
 import React from 'react'
 
