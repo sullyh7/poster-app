@@ -14,7 +14,7 @@ const HomeFeed = async () => {
 
 
     return  (
-    <div className='flex md:min-w-[35rem] justify-center items-center flex-col w-full gap-10'>
+    <div className='flex md:w-[55rem] justify-center items-center overflow-hidden flex-col flex-wrap w-full gap-10'>
         {data?.map(post => 
             <Post key={post.id} {...post}/>)}
     </div>

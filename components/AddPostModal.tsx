@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 const AddPostModal = () => {
     const {session, supabaseClient, isLoading} = useSessionContext();
     const [content, setContent] = useState("");
+    const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const AddPostModal = () => {
     
 
     const submitPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        setError(null);
         try {
 
             if (content.length < 5) {
@@ -34,8 +36,9 @@ const AddPostModal = () => {
             if(error) {
                 throw new Error();
             }
-        } catch (e) {
-            console.log(e);
+        } catch (err: any) {
+            e.preventDefault();
+            setError(err.toString());
         }
         setContent("");
     }
@@ -44,11 +47,12 @@ const AddPostModal = () => {
     <dialog id="addPostModal" className="modal modal-bottom sm:modal-middle">
         <form method="dialog" className="modal-box">
         <h3 className="font-bold text-lg">Add a post.</h3>
-        <textarea required onChange={e => setContent(e.target.value)} value={content} className='input' placeholder='Post content here'></textarea>
+        <textarea onChange={e => setContent(e.target.value)} value={content} className='input' placeholder='Post content here'></textarea>
         <div className="modal-action">
             <button className='btn btn-primary' onClick={submitPost}>Post</button>
          <button className="btn">Close</button>
         </div>
+        <h1>{error && "Error posting, check your post is more than 5 characters!"}</h1>
         </form>
     </dialog>
   )
