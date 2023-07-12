@@ -3,13 +3,11 @@
 import Post from '@/components/Post';
 import { PostResp } from '@/types/types';
 import { Database } from '@/types/types_db';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/dist/client/components/headers';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import React, { useEffect, useState } from 'react'
 
 const HomeFeed = () => {
-    const supabaseClient = createServerComponentClient<Database>({ cookies })
+    const supabaseClient = createClientComponentClient<Database>()
     const [data, setData] = useState<PostResp[] | null>(null)
     const [error, setError] = useState<string | null>(null);
 
