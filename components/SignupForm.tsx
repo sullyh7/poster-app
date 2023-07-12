@@ -29,7 +29,7 @@ export const SignupForm = () => {
                 email: email,
                 password: password,
                 options: {
-                    emailRedirectTo: `/${location.origin}`,
+                    emailRedirectTo: `/`,
                     data: {
                         username
                     }
