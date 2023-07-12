@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+
+}
+
+.gradient_bg {
+  @apply bg-gradient-to-r from-primary via-accent to-secondary;
+}
+
+.gradient_button {
+  @apply bg-gradient-to-r from-primary to-secondary;
+}
+
+.gradient_text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
+}
+.text-glow {
+  text-shadow: 0 0 90px rgba(0, 0, 255, 0.3);
+}
