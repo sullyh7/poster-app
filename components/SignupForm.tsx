@@ -29,7 +29,7 @@ export const SignupForm = () => {
                 email: email,
                 password: password,
                 options: {
-                    emailRedirectTo: `/`,
+                    emailRedirectTo: process.env.VERCEL_URL,
                     data: {
                         username
                     }
