@@ -19,7 +19,7 @@ const LoginStatus = () => {
     </div>
   ): 
   <div>
-    <button onClick={logout} className="btn btn-secondary">Logout</button>
+    <button onClick={logout} className="btn md:btn-md btn-xs btn-secondary">Logout</button>
   </div>
 }
 
