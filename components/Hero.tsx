@@ -13,7 +13,7 @@ const Hero = () => {
             <h1>Let everyone know your opinions about <span className="gradient_text">Anything.</span></h1>
         </div>
 
-        <div className='my-[15rem] flex flex-col md:text-7xl text-center'>
+        <div className='my-[15rem] flex flex-col md:text-7xl text-5xl text-center'>
             <h1>Have something on your mind you want people to know? <span className="gradient_text">Just make a post!</span></h1>
         </div>
     </div>
