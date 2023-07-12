@@ -1,16 +1,22 @@
 "use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useSessionContext } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const LoginForm = () => {
 
-  const supabaseClient = createClientComponentClient();
+  const {supabaseClient, session, isLoading} = useSessionContext();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (session) {
+      router.push("/feed")
+    }
+  })
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -6,7 +6,7 @@ const Hero = () => {
     <div className='flex flex-col'>
         <div className='p-5'>
             <h1 className="md:text-8xl text-5xl gradient_text font-extrabold">A New Way To Catch Up On The Latest News</h1>
-            <Link href={"/feed"} className='btn mt-5 w-[10rem]'>View Your Feed</Link>
+            <Link href={"/login"} className='btn mt-5 w-[10rem]'>View Your Feed</Link>
         </div>
         
         <div className='mt-[15rem] flex flex-col md:text-7xl text-5xl w-full text-center'>

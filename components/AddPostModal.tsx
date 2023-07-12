@@ -2,6 +2,7 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useSessionContext } from '@supabase/auth-helpers-react';
+import { revalidatePath } from 'next/cache';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
