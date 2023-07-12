@@ -1,19 +1,17 @@
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
-import { Database } from './types/types_db'
 
-export async function GET(request: NextRequest) {
-  const requestUrl = new URL(request.url)
-  const code = requestUrl.searchParams.get('code')
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next()
 
-  if (code) {
-    const supabase = createRouteHandlerClient<Database>({ cookies })
-    await supabase.auth.exchangeCodeForSession(code)
-  }
+  // Create a Supabase client configured to use cookies
+  const supabase = createMiddlewareClient<any>({ req, res })
 
-  // URL to redirect to after sign in process completes
-  return NextResponse.redirect(requestUrl.origin)
+  // Refresh session if expired - required for Server Components
+  // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-session-with-middleware
+  await supabase.auth.getSession()
+
+  return res
 }
